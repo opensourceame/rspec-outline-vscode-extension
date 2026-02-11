@@ -1,0 +1,78 @@
+{
+  "name": "rspec-outline-view",
+  "displayName": "RSpec Outline View",
+  "description": "Navigate RSpec files with an outline view of describe, context, it, before, after, and let blocks",
+  "version": "0.0.1",
+  "publisher": "your-publisher",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:ruby"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "rspecOutline",
+          "name": "RSpec Outline",
+          "when": "resourceFilename =~ /_spec\\.rb$/"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "rspecOutline.refresh",
+        "title": "Refresh RSpec Outline",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "rspecOutline.test",
+        "title": "Test RSpec Outline"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "rspecOutline.refresh",
+          "when": "view == rspecOutline",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "compile": "tsc -p ./",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "build:dev": "npm run esbuild-base -- --sourcemap",
+    "dev": "npm run esbuild-base -- --sourcemap --watch",
+    "build": "vsce package",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "format": "prettier --write src/**/*.ts",
+    "type-check": "tsc --noEmit",
+    "test": "npm run compile && node ./out/test/runTest.js",
+    "test:coverage": "npm test -- --coverage"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.x",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^6.x",
+    "@typescript-eslint/parser": "^6.x",
+    "@vscode/test-electron": "^2.x",
+    "esbuild": "^0.19.x",
+    "eslint": "^8.x",
+    "eslint-config-prettier": "^9.x",
+    "mocha": "^10.x",
+    "prettier": "^3.x",
+    "typescript": "^5.x",
+    "vsce": "^2.x"
+  }
+}
