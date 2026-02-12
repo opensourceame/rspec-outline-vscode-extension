@@ -92,6 +92,14 @@ export class RSpecParser {
   }
 
   private static extractName(rest: string, _type: RSpecNodeType): string {
+    if(_type == 'before') {
+      return 'before';
+    }
+
+    if(_type == 'after') {
+      return 'after';
+    }
+
     // Remove leading quotes and capture the name
     const nameMatch =
       rest.match(/^["']([^"']+)["']/) || rest.match(/^(\w+)/) || rest.match(/^\(([^)]+)\)/);

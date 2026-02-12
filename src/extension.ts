@@ -31,24 +31,26 @@ function convertToDocumentSymbols(nodes: any[]): vscode.DocumentSymbol[] {
   return symbols;
 }
 
-function getSymbolKind(type): vscode.SymbolKind {
+function getSymbolKind(type: string): vscode.SymbolKind {
     // Use different icons for different element types
     switch (type) {
       case 'describe':
-      case 'xdescribe':
         return vscode.SymbolKind.Module;
+      case 'xdescribe':
+        return vscode.SymbolKind.Null;
       case 'context':
-      case 'xcontext':
-        return vscode.SymbolKind.Namespace;
-      case 'it':
-      case 'xit':
         return vscode.SymbolKind.Method;
+      case 'xcontext':
+        return vscode.SymbolKind.Null;
+      case 'xit':
+      case 'it':
+        return vscode.SymbolKind.Null;
       case 'before':
-        return vscode.SymbolKind.Function;
+        return vscode.SymbolKind.Event;
       case 'after':
-        return vscode.SymbolKind.Function;
+        return vscode.SymbolKind.Event;
       case 'let':
-        return vscode.SymbolKind.Variable;
+        return vscode.SymbolKind.Field;
       default:
         return vscode.SymbolKind.Object;
     }
