@@ -13,7 +13,7 @@ A VS Code extension that provides an outline view for RSpec files (`*_spec.rb`).
 
 ## Screenshots
 
-![Outline](https://raw.githubusercontent.com/opensourceame/rspec-outline-vscode-extension/master/docs/screenshot-outline.png)
+![Outline](https://raw.githubusercontent.com/opensourceame/rspec-outline-vscode-extension/master/images/screenshot-outline.png)
 
 
 ## Supported RSpec Elements

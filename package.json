@@ -30,8 +30,9 @@
   "changelog": "https://github.com/opensourceame/rspec-outline-vscode-extension/blob/master/CHANGELOG.md",
   "markdown": "github",
   "qna": "https://github.com/opensourceame/rspec-outline-vscode-extension/issues",
+  "icon": "images/rspec_outline_icon.jpg",
   "engines": {
-    "vscode": "^1.80.0"
+    "vscode": "^1.85.0"
   },
   "categories": [
     "Other"
