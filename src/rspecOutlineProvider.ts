@@ -27,12 +27,18 @@ export class RSpecOutlineProvider implements vscode.TreeDataProvider<RSpecNode> 
 
   getTreeItem(element: RSpecNode): vscode.TreeItem {
     console.log(`[RSpecOutlineProvider] getTreeItem called for: ${element.name} (${element.type})`);
-    const item = new vscode.TreeItem(
-      element.name,
-      element.children.length > 0
-        ? vscode.TreeItemCollapsibleState.Expanded
-        : vscode.TreeItemCollapsibleState.None
-    );
+
+    // Determine collapsible state: collapsed for skipped nodes, expanded for others
+    let collapsibleState: vscode.TreeItemCollapsibleState;
+    if (element.children.length === 0) {
+      collapsibleState = vscode.TreeItemCollapsibleState.None;
+    } else if (element.isSkipped) {
+      collapsibleState = vscode.TreeItemCollapsibleState.Collapsed;
+    } else {
+      collapsibleState = vscode.TreeItemCollapsibleState.Expanded;
+    }
+
+    const item = new vscode.TreeItem(element.name, collapsibleState);
 
     item.tooltip = `${element.type} at line ${element.line}`;
     item.command = {
@@ -130,8 +136,6 @@ export class RSpecOutlineProvider implements vscode.TreeDataProvider<RSpecNode> 
     console.log('[RSpecOutlineProvider] Refreshing tree view');
     this.refresh();
   }
-
-
 
   private getIconPath(type: string): vscode.ThemeIcon {
     switch (type) {

@@ -7,14 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.0.1] - 2024-02-11
+## [0.0.2] - 2026-02-18
+
+* support Rspec.describe declarations
+* add screenshots
+* update package.json with info about package
+
+## [0.0.1] - 2026-02-11
 
 ### Added
 - Initial release of RSpec Outline View extension
 - Tree view in Explorer panel for RSpec files (`*_spec.rb`)
 - Support for parsing RSpec blocks:
   - `describe` and `xdescribe`
-  - `context` and `xcontext` 
+  - `context` and `xcontext`
   - `it` and `xit`
   - `before` hooks
   - `after` hooks

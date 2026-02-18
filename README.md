@@ -11,12 +11,17 @@ A VS Code extension that provides an outline view for RSpec files (`*_spec.rb`).
 - 🔄 **Real-time Updates**: Outline updates automatically as you edit the file
 - 🎨 **Visual Icons**: Different icons for different RSpec block types
 
+## Screenshots
+
+![Outline](https://raw.githubusercontent.com/opensourceame/rspec-outline-vscode-extension/master/docs/screenshot-outline.png)
+
+
 ## Supported RSpec Elements
 
 The extension recognizes the following RSpec elements:
 
 - `describe` - Top-level test groups
-- `context` - Nested test groups  
+- `context` - Nested test groups
 - `it` - Individual test cases
 - `before` - Setup hooks
 - `after` - Teardown hooks
@@ -30,7 +35,7 @@ The extension recognizes the following RSpec elements:
 3. Search for "RSpec Outline View"
 4. Click Install
 
-Or install from the marketplace: [RSpec Outline View](https://marketplace.visualstudio.com/items?itemName=your-publisher.rspec-outline-view)
+Or install from the marketplace: [RSpec Outline View](https://marketplace.visualstudio.com/items?itemName=opensourceame.rspec-outline-view)
 
 ## Usage
 
@@ -83,7 +88,7 @@ end
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/rspec-outline-vscode-extension.git
+   git clone https://github.com/opensourceame/rspec-outline-vscode-extension.git
    cd rspec-outline-vscode-extension
    ```
 
@@ -160,7 +165,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Issues
 
-Please report issues on the [GitHub repository](https://github.com/your-username/rspec-outline-vscode-extension/issues).
+Please report issues on the [GitHub repository](https://github.com/opensourceame/rspec-outline-vscode-extension/issues).
 
 ## Support
 

@@ -2,8 +2,9 @@ import * as vscode from 'vscode';
 import { RSpecNode, RSpecNodeType, ParseResult, VALID_PREFIXES, SKIPPED_PREFIXES } from './types';
 
 export class RSpecParser {
+  // Optional prefix: Rspec. or RSpec. (e.g. Rspec.describe "..." do)
   private static readonly NODE_PATTERN =
-    /^\s*(describe|context|it|before|after|let|xdescribe|xcontext|xit)\s+(.+)/i;
+    /^\s*(?:R[sS]pec\.)?(describe|context|it|before|after|let|xdescribe|xcontext|xit)\s+(.+)/i;
 
   static parseFile(content: string, filePath: string): ParseResult<RSpecNode[]> {
     console.log(`[RSpecParser] Parsing file: ${filePath}`);

@@ -11,7 +11,7 @@ function convertToDocumentSymbols(nodes: any[]): vscode.DocumentSymbol[] {
     const range = new vscode.Range(node.line - 1, 0, node.line - 1, node.name.length);
     const symbol = new vscode.DocumentSymbol(
       node.name,
-      node.type,
+      getSymbolType(node.type),
       getSymbolKind(node.type),
       range,
       range
@@ -31,18 +31,26 @@ function convertToDocumentSymbols(nodes: any[]): vscode.DocumentSymbol[] {
   return symbols;
 }
 
+function getSymbolType(type: string): string {
+  switch (type) {
+    case 'before':
+      return '';
+    default:
+      return type;
+  }
+}
+
 function getSymbolKind(type: string): vscode.SymbolKind {
     // Use different icons for different element types
     switch (type) {
       case 'describe':
         return vscode.SymbolKind.Module;
-      case 'xdescribe':
-        return vscode.SymbolKind.Null;
       case 'context':
-        return vscode.SymbolKind.Method;
+          return vscode.SymbolKind.Method;
+      case 'xdescribe':
       case 'xcontext':
-        return vscode.SymbolKind.Null;
       case 'xit':
+        return vscode.SymbolKind.EnumMember;
       case 'it':
         return vscode.SymbolKind.Null;
       case 'before':

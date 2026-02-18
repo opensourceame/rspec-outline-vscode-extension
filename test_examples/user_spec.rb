@@ -1,5 +1,11 @@
 require 'rspec'
 
+Rspec.describe "User testing" do
+  it "should test the user" do
+    expect(User.new(email: "test@example.com", password: "password123").valid?).to be_truthy
+  end
+end
+
 describe "User authentication" do
   let(:user) { User.new(email: "test@example.com", password: "password123") }
 

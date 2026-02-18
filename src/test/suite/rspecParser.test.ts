@@ -144,6 +144,40 @@ end`;
     assert.strictEqual(result.data.length, 0);
   });
 
+  test('should parse Rspec.describe and RSpec.describe declarations', () => {
+    const content = `Rspec.describe "User testing" do
+  it "should test the user" do
+    # test
+  end
+end
+
+RSpec.describe "Another group" do
+  context "nested" do
+    it "works" do
+    end
+  end
+end`;
+
+    const result = RSpecParser.parseFile(content, '/test/rspec_prefix_spec.rb');
+
+    assert.strictEqual(result.success, true);
+    const nodes = result.data;
+    assert.strictEqual(nodes.length, 2);
+
+    assert.strictEqual(nodes[0].type, 'describe');
+    assert.strictEqual(nodes[0].name, 'User testing');
+    assert.strictEqual(nodes[0].line, 1);
+    assert.strictEqual(nodes[0].children.length, 1);
+    assert.strictEqual(nodes[0].children[0].type, 'it');
+    assert.strictEqual(nodes[0].children[0].name, 'should test the user');
+
+    assert.strictEqual(nodes[1].type, 'describe');
+    assert.strictEqual(nodes[1].name, 'Another group');
+    assert.strictEqual(nodes[1].children.length, 1);
+    assert.strictEqual(nodes[1].children[0].type, 'context');
+    assert.strictEqual(nodes[1].children[0].name, 'nested');
+  });
+
   test('should extract names with different quote styles', () => {
     const content = `describe 'single quotes' do
   describe "double quotes" do

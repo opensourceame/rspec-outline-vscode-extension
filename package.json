@@ -2,14 +2,36 @@
   "name": "rspec-outline-view",
   "displayName": "RSpec Outline View",
   "description": "Navigate RSpec files with an outline view of describe, context, it, before, after, and let blocks",
-  "version": "0.0.1",
-  "publisher": "your-publisher",
+  "version": "0.0.2",
+  "publisher": "opensourceame",
   "repository": {
     "type": "git",
     "url": "https://github.com/opensourceame/rspec-outline-vscode-extension.git"
   },
+  "homepage": "https://github.com/opensourceame/rspec-outline-vscode-extension",
+  "bugs": {
+    "url": "https://github.com/opensourceame/rspec-outline-vscode-extension/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "rspec",
+    "ruby",
+    "outline",
+    "spec",
+    "unit testing",
+    "unit test",
+    "testing",
+    "bdd",
+    "tdd",
+    "rails",
+    "test navigation",
+    "spec outline"
+  ],
+  "changelog": "https://github.com/opensourceame/rspec-outline-vscode-extension/blob/master/CHANGELOG.md",
+  "markdown": "github",
+  "qna": "https://github.com/opensourceame/rspec-outline-vscode-extension/issues",
   "engines": {
-    "vscode": "^1.74.0"
+    "vscode": "^1.80.0"
   },
   "categories": [
     "Other"
@@ -67,7 +89,7 @@
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "^20.x",
-    "@types/vscode": "^1.74.0",
+    "@types/vscode": "^1.85.0",
     "@typescript-eslint/eslint-plugin": "^6.x",
     "@typescript-eslint/parser": "^6.x",
     "@vscode/test-electron": "^2.x",
