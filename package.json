@@ -2,7 +2,7 @@
   "name": "rspec-outline-view",
   "displayName": "RSpec Outline View",
   "description": "Navigate RSpec files with an outline view of describe, context, it, before, after, and let blocks",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "opensourceame",
   "repository": {
     "type": "git",
@@ -30,7 +30,7 @@
   "changelog": "https://github.com/opensourceame/rspec-outline-vscode-extension/blob/master/CHANGELOG.md",
   "markdown": "github",
   "qna": "https://github.com/opensourceame/rspec-outline-vscode-extension/issues",
-  "icon": "images/rspec_outline_icon.jpg",
+  "icon": "images/rspec_outline_icon.png",
   "engines": {
     "vscode": "^1.85.0"
   },

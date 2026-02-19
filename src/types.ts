@@ -1,9 +1,12 @@
-export type RSpecNodeType = 
+export type RSpecNodeType =
   | 'describe'
   | 'context'
   | 'it'
+  | 'around'
   | 'before'
+  | 'prepend_before'
   | 'after'
+  | 'append_after'
   | 'let'
   | 'xdescribe'
   | 'xcontext'
@@ -30,10 +33,13 @@ export const RSPEC_FILE_PATTERN = '*_spec.rb';
 export const SKIPPED_PREFIXES = ['xdescribe', 'xcontext', 'xit'];
 export const VALID_PREFIXES = [
   'describe',
-  'context', 
+  'context',
   'it',
+  'around',
   'before',
+  'prepend_before',
   'after',
+  'append_after',
   'let',
   'xdescribe',
   'xcontext',

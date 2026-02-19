@@ -4,7 +4,7 @@ import { RSpecNode, RSpecNodeType, ParseResult, VALID_PREFIXES, SKIPPED_PREFIXES
 export class RSpecParser {
   // Optional prefix: Rspec. or RSpec. (e.g. Rspec.describe "..." do)
   private static readonly NODE_PATTERN =
-    /^\s*(?:R[sS]pec\.)?(describe|context|it|before|after|let|xdescribe|xcontext|xit)\s+(.+)/i;
+    /^\s*(?:R[sS]pec\.)?(describe|context|it|around|before|prepend_before|after|append_after|let|xdescribe|xcontext|xit)\s+(.+)/i;
 
   static parseFile(content: string, filePath: string): ParseResult<RSpecNode[]> {
     console.log(`[RSpecParser] Parsing file: ${filePath}`);
@@ -93,12 +93,9 @@ export class RSpecParser {
   }
 
   private static extractName(rest: string, _type: RSpecNodeType): string {
-    if(_type == 'before') {
-      return 'before';
-    }
-
-    if(_type == 'after') {
-      return 'after';
+    const hookTypes = ['before', 'after', 'around', 'prepend_before', 'append_after'];
+    if (hookTypes.includes(_type)) {
+      return _type;
     }
 
     // Remove leading quotes and capture the name

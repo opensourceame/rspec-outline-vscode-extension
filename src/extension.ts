@@ -33,7 +33,11 @@ function convertToDocumentSymbols(nodes: any[]): vscode.DocumentSymbol[] {
 
 function getSymbolType(type: string): string {
   switch (type) {
+    case 'around':
     case 'before':
+    case 'prepend_before':
+    case 'after':
+    case 'append_after':
       return '';
     default:
       return type;
@@ -54,8 +58,9 @@ function getSymbolKind(type: string): vscode.SymbolKind {
       case 'it':
         return vscode.SymbolKind.Null;
       case 'before':
-        return vscode.SymbolKind.Event;
+      case 'prepend_before':
       case 'after':
+      case 'append_after':
         return vscode.SymbolKind.Event;
       case 'let':
         return vscode.SymbolKind.Field;

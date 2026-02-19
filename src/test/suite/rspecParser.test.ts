@@ -122,6 +122,49 @@ end`;
     assert.strictEqual(itNode?.type, 'it');
   });
 
+  test('should parse around, prepend_before and append_after hooks', () => {
+    const content = `describe "all hooks" do
+  around do |example|
+    # wrap
+  end
+
+  prepend_before do
+    # runs first
+  end
+
+  append_after do
+    # runs last
+  end
+
+  it "runs with hooks" do
+    # test
+  end
+end`;
+
+    const result = RSpecParser.parseFile(content, '/test/hooks_spec.rb');
+
+    assert.strictEqual(result.success, true);
+    const nodes = result.data;
+    const describeNode = nodes[0];
+
+    const aroundNode = describeNode.children.find((child: any) => child.type === 'around');
+    const prependBeforeNode = describeNode.children.find(
+      (child: any) => child.type === 'prepend_before'
+    );
+    const appendAfterNode = describeNode.children.find(
+      (child: any) => child.type === 'append_after'
+    );
+    const itNode = describeNode.children.find((child: any) => child.type === 'it');
+
+    assert.strictEqual(aroundNode?.type, 'around');
+    assert.strictEqual(aroundNode?.name, 'around');
+    assert.strictEqual(prependBeforeNode?.type, 'prepend_before');
+    assert.strictEqual(prependBeforeNode?.name, 'prepend_before');
+    assert.strictEqual(appendAfterNode?.type, 'append_after');
+    assert.strictEqual(appendAfterNode?.name, 'append_after');
+    assert.strictEqual(itNode?.type, 'it');
+  });
+
   test('should handle empty files gracefully', () => {
     const content = '';
     const result = RSpecParser.parseFile(content, '/test/empty_spec.rb');

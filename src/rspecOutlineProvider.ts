@@ -149,9 +149,13 @@ export class RSpecOutlineProvider implements vscode.TreeDataProvider<RSpecNode> 
       case 'xit':
         return new vscode.ThemeIcon('check');
       case 'before':
+      case 'prepend_before':
         return new vscode.ThemeIcon('arrow-up');
       case 'after':
+      case 'append_after':
         return new vscode.ThemeIcon('arrow-down');
+      case 'around':
+        return new vscode.ThemeIcon('sync');
       case 'let':
         return new vscode.ThemeIcon('variable');
       default:
